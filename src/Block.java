@@ -7,17 +7,15 @@ public class Block {
 		this.blockSize = blockSize;
 		this.blockData.setLength(blockSize);
 	}
-	
+
 	public void generateRandomBlockData(){
 		for(int i = 0; i<blockSize;i++){
 			char randomChar = (char)randInt(32, 126);
 			blockData.setCharAt(i,randomChar);
-			
+
 		}
-		//System.out.println(blockData.length());
-		//System.out.println(blockData.toString());
 	}
-	
+
 	/**
 	 * Returns a psuedo-random number between min and max, inclusive.
 	 * The difference between min and max can be at most
