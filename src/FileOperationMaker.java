@@ -5,6 +5,10 @@ import java.util.Random;
 import java.io.IOException;
 import java.io.FileWriter;
 
+/**
+ * This class creates disk operations to be done on random file indices with random operation types
+ * @author Inderpreet Pabla
+ */
 public class FileOperationMaker{
 
     String operationFile = "fileoperations.txt";
@@ -13,13 +17,13 @@ public class FileOperationMaker{
     Scanner scannerData;
     
     public FileOperationMaker(){
-    
+    	makeOperationFile();
     }
 
     public void makeRandomOperations(int numberOfFiles){
+    	
         File file = new File(operationFile);
-        makeOperationFile();
-
+        
         try{
             FileWriter fileWriter = new FileWriter(operationFile,true);
             for(int i = 0; i<numberOfFiles*3;i++){
@@ -38,6 +42,8 @@ public class FileOperationMaker{
     public void makeOperationFile() {
         File file = new File(operationFile);
         file.delete();
+       
+        file = new File(operationFile);
         try {
             file.createNewFile();
         }
@@ -45,12 +51,6 @@ public class FileOperationMaker{
             e.printStackTrace();
         }
     }
-
-    public static int randInt(int min, int max) {
-	    Random rand = new Random();
-	    int randomNum = rand.nextInt((max - min) + 1) + min;
-	    return randomNum;
-	}
     
     public boolean hasNext(){
     	if(scannerLine.hasNext()){
@@ -69,5 +69,25 @@ public class FileOperationMaker{
     	}
     	return operationData;
     }
+    
+    public void closeAll(){
+    	scannerLine.close();
+    	scannerData.close();
+    	scannerLine = null;
+    	scannerData = null;
+    }
+    
+    /**
+	 * Returns a psuedo-random number between min and max, inclusive.
+	 * The difference between min and max can be at most
+	 * @param min Minimim value
+	 * @param max Maximim value.  Must be greater than min.
+	 * @return Integer between min and max, inclusive.
+	 */
+    public static int randInt(int min, int max) {
+	    Random rand = new Random();
+	    int randomNum = rand.nextInt((max - min) + 1) + min;
+	    return randomNum;
+	}
 
 }

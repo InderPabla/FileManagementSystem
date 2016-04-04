@@ -1,10 +1,12 @@
+/**
+ * This class acts like a simulated file. With array of blocks storing random chunks of data 512 bytes in size.
+ * @author Inderpreet Pabla
+ */
 public class SimulatedFile{
 
     int fileNumber;
     int fileBlocks;
     Block[] blocks;
-    
-    //int linkedStartingIndex;
     
     public SimulatedFile(int fileNumber, int fileBlocks){
         this.fileNumber = fileNumber;
@@ -15,8 +17,6 @@ public class SimulatedFile{
         for(int i = 0; i<blocks.length; i++){
             blocks[i] = new Block(512);
             blocks[i].generateRandomBlockData();
-        }
-        
-        //linkedStartingIndex = -1;
+        }   
     }
 }

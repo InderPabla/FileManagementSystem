@@ -1,5 +1,9 @@
 import java.util.Random;
 
+/**
+ * This class creates string of size 512, with random characters between ASCII 36-126.
+ * @author Inderpreet Pabla
+ */
 public class Block {
 	int blockSize;
 	StringBuilder blockData = new StringBuilder();

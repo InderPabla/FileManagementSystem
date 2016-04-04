@@ -1,4 +1,7 @@
-
+/**
+ * This class acts like a linked list and a contiguous array. 
+ * @author Inderpreet Pabla
+ */
 public class LinkedBlock {
 	int fileNumber ;
 	Block block;
