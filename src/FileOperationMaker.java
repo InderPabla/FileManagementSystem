@@ -16,10 +16,16 @@ public class FileOperationMaker{
     Scanner scannerLine;
     Scanner scannerData;
     
+	 /**
+	 * Class constructor makes the initial operaitons file
+	 */
     public FileOperationMaker(){
     	makeOperationFile();
     }
 
+	 /**
+	 * Create random operations to be performed onto the disk (For debugging)
+	 */
     public void makeRandomOperations(int numberOfFiles){
     	
         File file = new File(operationFile);
@@ -39,6 +45,9 @@ public class FileOperationMaker{
         }
     }
 
+	 /**
+	 * Make an operation file
+	 */
     public void makeOperationFile() {
         File file = new File(operationFile);
         file.delete();
@@ -52,6 +61,9 @@ public class FileOperationMaker{
         }
     }
     
+	 /**
+	 * While scanner has next return true, else false
+	 */
     public boolean hasNext(){
     	if(scannerLine.hasNext()){
     		return true;
@@ -61,6 +73,9 @@ public class FileOperationMaker{
     	}
     }
     
+	 /**
+	 *Read next operation data from file.
+	 */
     public OperationData next(){
     	OperationData operationData = null;
     	if(scannerLine.hasNext()){
@@ -70,6 +85,9 @@ public class FileOperationMaker{
     	return operationData;
     }
     
+	 /**
+	 * Close all scanners.
+	 */
     public void closeAll(){
     	scannerLine.close();
     	scannerData.close();

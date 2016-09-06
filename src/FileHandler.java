@@ -407,16 +407,22 @@ public class FileHandler{
     	System.out.println("-----------------------------------------------------------------------------");
     }
     
+	
+	/**
+	* Write contiguously data at a given file index if there is available space.
+	* @param fileIndex Index of the file to be saved onto disk contiguously
+	*/
     public void writeContiguous(int fileIndex){
-    	SimulatedFile file = getHashFileFromIndex(fileIndex);
-    	int location = availableContiguousLocation(file.fileBlocks);
-    	int existLocation = contiguousFileExists(file.fileNumber);
+    	SimulatedFile file = getHashFileFromIndex(fileIndex); //get file at index
+    	int location = availableContiguousLocation(file.fileBlocks); //check to see if there is available location
+    	int existLocation = contiguousFileExists(file.fileNumber);  //check to see if it already exist
     	
+		//file already exists
     	if(existLocation != -1){	
     		String blocks = "";
 			for(int i = existLocation; i< existLocation+file.fileBlocks;i++){
 				blocks+=i+" ";
-        	}
+			}
 			
 			//print information
 			printAcquire();
@@ -454,6 +460,11 @@ public class FileHandler{
     	
     }
    
+   
+    /**
+	* Read contiguously data at a given file index if it exists
+	* @param fileIndex Index of the file to read if it exists
+	*/
     public void readContiguous(int fileIndex){
     	SimulatedFile file = getHashFileFromIndex(fileIndex);
     	int existLocation = contiguousFileExists(file.fileNumber);
@@ -478,6 +489,10 @@ public class FileHandler{
     	}
     }
     
+	 /**
+	 * Delete a contiguous file with the given index if it exists
+	 * @param fileIndex Check if file at this index exists and delete it
+	 */
     public void deleteContiguous(int fileIndex){
     	SimulatedFile file = getHashFileFromIndex(fileIndex);
     	int existLocation = contiguousFileExists(file.fileNumber);
@@ -504,6 +519,10 @@ public class FileHandler{
     	
     }
     
+	/**
+	* Write linked data at a given file index if there is available space.
+	* @param fileIndex Index of the file to be saved onto disk with linked list
+	*/
     public void writeLinked(int fileIndex){
     	SimulatedFile file = getHashFileFromIndex(fileIndex);
     	int location = availableLinkedLocation(file.fileBlocks);
@@ -574,6 +593,10 @@ public class FileHandler{
     	}
     }
        
+	 /**
+	* Read linked data at a given file index if it exists
+	* @param fileIndex Index of the file to be read from disk with linked list
+	*/
     public void readLinked(int fileIndex){
     	SimulatedFile file = getHashFileFromIndex(fileIndex);
     	int existLocation = linkedFileExists(file.fileNumber);
@@ -605,6 +628,10 @@ public class FileHandler{
     	}
     }
 
+	 /**
+	* Delete linked data at a given file index if it exists
+	* @param fileIndex Index of the file to be deleted from disk
+	*/
 	public void deleteLinked(int fileIndex){
 		SimulatedFile file = getHashFileFromIndex(fileIndex);
 		int existLocation = linkedFileExists(file.fileNumber);

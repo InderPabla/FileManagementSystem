@@ -6,12 +6,22 @@ import java.util.Random;
  */
 public class Block {
 	int blockSize;
-	StringBuilder blockData = new StringBuilder();
+	StringBuilder blockData;
+	
+	/**
+	* Class constructor initializes block size and a string builder with the given block size.
+	* @param blockSize Size of the string builder
+	*/
 	public Block(int blockSize){
 		this.blockSize = blockSize;
-		this.blockData.setLength(blockSize);
+		
+		blockData  = new StringBuilder();
+		blockData.setLength(blockSize);
 	}
-
+	
+	/**
+	* Generate random block data to simulate saved data.
+	*/
 	public void generateRandomBlockData(){
 		for(int i = 0; i<blockSize;i++){
 			char randomChar = (char)randInt(32, 126);

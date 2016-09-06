@@ -9,9 +9,11 @@ import java.util.Random;
 public class FileSystemTester {
 
     static FileHandler fileHandler;
-	static Scanner scanner;
+	static Scanner scanner; 
 	
-	static boolean[] open = new boolean[100];
+	 /**
+	 * Main methods create file handeler and starts user inputs
+	 */
 	public static void main(String[] args) {
 		scanner = new Scanner(System.in);
 		fileHandler = new FileHandler();
@@ -19,6 +21,9 @@ public class FileSystemTester {
 		getInputs();
 	}
 
+	 /**
+	 * Get various user inputs
+	 */
 	public static void getInputs(){
 		while(true){
 			System.out.print("Enter (Type: \"help\" for more): ");
@@ -46,7 +51,10 @@ public class FileSystemTester {
 			}
 		}
 	}
-
+	
+	 /**
+	 * Delete a certain file
+	 */
 	public static void delete(){
 		System.out.print("File Number: ");
         int fileNumber = scanner.nextInt();
@@ -54,6 +62,9 @@ public class FileSystemTester {
 		System.out.print("\n");
 	}
 
+	 /**
+	 * Rename a certain file
+	 */
 	public static void rename(){
 		System.out.print("Current File Number: ");
 		int oldFileNumber = scanner.nextInt();
@@ -63,6 +74,9 @@ public class FileSystemTester {
 		System.out.print("\n");
 	}
 	
+	 /**
+	 * Create random files with random block sizes
+	 */
 	public static void random(){
         for(int i = 0; i < 10; i++){
             int fileNumber  = i+1;
@@ -72,12 +86,18 @@ public class FileSystemTester {
 		System.out.print("\n");
 	}
 
+	 /**
+	 * list all file information
+	 */
 	public static void list(){
 	    fileHandler.listFiles();
 		System.out.print("\n");
 
 	}
-
+	
+	/**
+	 * Create a file with specified number of blocks
+	 */
     public static void create(){
     	System.out.print("File Number: ");
         int fileNumber = scanner.nextInt();
@@ -86,12 +106,18 @@ public class FileSystemTester {
         fileHandler.createFile(fileNumber,fileBlocks);
 		System.out.print("\n");
 	}
-
+	
+	/**
+	 * Perform random disk operations (Debugging)
+	 */
     public static void diskOperation(){
         fileHandler.diskOperation();
 		System.out.print("\n");
 	}
     
+	/**
+	 * Inform user of available command line actions.
+	 */
 	public static void help(){
 		System.out.println("Type \"random\"	to make 10 random files.");
 		System.out.println("Type \"list\" 	to list all files.");
